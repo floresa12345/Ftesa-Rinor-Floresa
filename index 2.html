@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="sq">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#fbf8f4">
+<title>Floresa & Rinor — Ftesë dasme</title>
+<style>
+:root{--gold:#a98250;--gold2:#c4a477;--ink:#51463d;--paper:#fffdf9}
+*{box-sizing:border-box}
+body{margin:0;min-height:100vh;padding:28px 16px 42px;background:radial-gradient(ellipse at top,#fff 0,#f7f0e9 70%,#eee3d7 100%);color:var(--ink);font-family:Georgia,"Times New Roman",serif}
+main{width:min(100%,440px);margin:0 auto;text-align:center}
+.kicker{font:11px Arial,sans-serif;letter-spacing:3px;text-transform:uppercase;color:#9d8468;margin:8px 0 22px}
+.stage{height:290px;display:flex;align-items:center;justify-content:center;perspective:1100px}
+.envelope{position:relative;width:min(100%,350px);height:218px;cursor:pointer;filter:drop-shadow(0 16px 18px #6c513522);border:0;background:transparent;padding:0;display:block}
+.env-back{position:absolute;inset:0;background:#eadccd;border:1px solid #d5c1a7;border-radius:5px}
+.env-letter{position:absolute;z-index:2;left:7%;width:86%;height:190px;bottom:7px;background:var(--paper);border:1px solid #e4d5c2;display:flex;flex-direction:column;align-items:center;justify-content:center;transition:transform 1s cubic-bezier(.2,.75,.2,1);padding:12px}
+.env-letter .tiny{font:10px Arial;letter-spacing:2px;color:#a18a6c}
+.env-letter strong{font-size:27px;font-weight:normal;color:var(--gold);margin:9px 0}
+.env-letter .date-small{font:10px Arial;letter-spacing:2px;color:#85796c}
+.env-front{position:absolute;z-index:3;inset:0;border-radius:5px;background:linear-gradient(145deg,#f7f0e8,#e6d4bf);clip-path:polygon(0 0,50% 57%,100% 0,100% 100%,0 100%)}
+.flap{position:absolute;z-index:4;inset:0;background:#e4d2bd;clip-path:polygon(0 0,100% 0,50% 59%);transform-origin:top;transition:transform .8s ease}
+.seal{position:absolute;z-index:5;left:50%;top:56%;transform:translate(-50%,-50%);width:49px;height:49px;border-radius:50%;display:grid;place-items:center;background:var(--gold);color:#fff9f0;font-size:17px;box-shadow:0 3px 9px #57432b35;transition:opacity .25s}
+.envelope.open .flap{transform:rotateX(180deg);z-index:1}
+.envelope.open .env-letter{transform:translateY(-112px)}
+.envelope.open .seal{opacity:0}
+.tap{font:12px Arial,sans-serif;letter-spacing:1px;color:#927c63;margin:0 0 22px}
+.invite{display:none;opacity:0;transform:translateY(18px);background:var(--paper);border:1px solid #dfceb8;padding:30px 23px 27px;box-shadow:0 14px 40px #79654a18;transition:opacity .8s ease,transform .8s ease}
+.invite.visible{display:block;animation:reveal .85s ease forwards}
+@keyframes reveal{to{opacity:1;transform:translateY(0)}}
+.flourish{color:var(--gold2);letter-spacing:5px;font-size:17px}
+.eyebrow{font:10px Arial,sans-serif;letter-spacing:3px;color:#9b805c;margin:16px 0}
+h1{font-size:39px;font-weight:normal;color:var(--gold);margin:8px 0 17px}
+.copy{font-size:15px;line-height:1.75;color:#6d6258;margin:0 auto;max-width:340px}
+.date{font-size:25px;color:var(--gold);margin:23px 0 8px}
+.details{font:12px Arial,sans-serif;letter-spacing:1.6px;color:#776b60;line-height:1.9}
+.venue{font-size:20px;color:var(--gold);margin:20px 0 5px}
+.map{display:inline-block;margin-top:22px;padding:14px 19px;background:var(--gold);color:#fff;text-decoration:none;font:11px Arial,sans-serif;letter-spacing:1.2px;text-transform:uppercase;border-radius:2px}
+.map:focus,.envelope:focus{outline:3px solid #d6b98e;outline-offset:4px}
+.footer{font-size:14px;color:#8b7b6c;margin:22px 0 0;line-height:1.7}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{transition:none!important;animation:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+<main>
+  <p class="kicker">Një ftesë nga zemra</p>
+  <div class="stage">
+    <button class="envelope" id="envelope" type="button" aria-label="Preke për ta hapur ftesën">
+      <span class="env-back"></span>
+      <span class="env-letter">
+        <span class="tiny">ME DASHURI</span>
+        <strong>Floresa &amp; Rinor</strong>
+        <span class="date-small">31 KORRIK 2027</span>
+      </span>
+      <span class="env-front"></span>
+      <span class="flap"></span>
+      <span class="seal">F&nbsp;♡&nbsp;R</span>
+    </button>
+  </div>
+  <p class="tap" id="tap">Preke zarfin për ta hapur ftesën</p>
+
+  <section class="invite" id="invite" aria-hidden="true">
+    <div class="flourish">✦ ❀ ✦</div>
+    <p class="eyebrow">JU FTOJMË ME DASHURI</p>
+    <h1>Floresa &amp; Rinor</h1>
+    <p class="copy">Ju ftojmë të bashkoheni me ne në ceremoninë tonë të dasmës, për të ndarë lumturinë tonë në këtë ditë të veçantë.</p>
+    <div class="date">31 Korrik 2027</div>
+    <div class="details">E SHTUNË · ORA 19:00</div>
+    <div class="venue">Restaurant 3 Yjet</div>
+    <div class="details">FERIZAJ</div>
+    <a class="map" href="https://www.google.com/maps/search/?api=1&amp;query=Restaurant%203%20Yjet%2C%20Ferizaj%2C%20Kosovo" target="_blank" rel="noopener noreferrer">Hap lokacionin në Google Maps</a>
+    <p class="footer">Me respekt,<br><strong>Familja Derguti</strong></p>
+    <div class="flourish" style="margin-top:22px">✦</div>
+  </section>
+</main>
+<script>
+(function(){
+  const envelope=document.getElementById('envelope');
+  const invite=document.getElementById('invite');
+  const tap=document.getElementById('tap');
+  envelope.addEventListener('click',function(){
+    if(envelope.classList.contains('open')) return;
+    envelope.classList.add('open');
+    tap.textContent='Me shumë dashuri ju presim';
+    window.setTimeout(function(){
+      invite.classList.add('visible');
+      invite.setAttribute('aria-hidden','false');
+      invite.scrollIntoView({behavior:'smooth',block:'start'});
+    },650);
+  });
+})();
+</script>
+</body>
+</html>
