@@ -48,9 +48,9 @@ body{
 
 .envelope{
 
-  position:relative;
+  position:absolute;
 
-  width:100%;
+  width:86%;
 
   max-width:360px;
 
@@ -82,17 +82,17 @@ body{
 
   background:#dfcbb6;
 
-  clip-path:polygon(0 0,50% 58%,100% 0);
+  clip-path:inset(0);
 
   transform-origin:top;
 
   transition:transform 1s ease;
 
-  z-index:5;
+  z-index:2;
 
 }
 
-.envelope:after{
+. vbb envelope:after{
 
   content:"";
 
@@ -174,7 +174,7 @@ body{
 
 .envelope.open .letter{
 
-  transform:translateY(-155px);
+  transform:translateY(0);
 
 }
 
