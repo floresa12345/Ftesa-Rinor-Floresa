@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 
 <html lang="sq">
 
@@ -6,11 +6,13 @@
 
 <meta charset="utf-8">
 
-<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 
 <meta name="theme-color" content="#fbf8f4">
 
 <title>Rinor & Floresa — Ftesë dasme</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Parisienne&display=swap" rel="stylesheet">
 
 <style>
 
@@ -18,391 +20,339 @@
 
 body{
 
-margin:0;
+  margin:0;
 
-min-height:100vh;
+  min-height:100vh;
 
-display:grid;
+  display:grid;
 
-place-items:center;
+  place-items:center;
 
-background:radial-gradient(circle at top,#fff 0,#f5eee8 75%);
+  padding:20px;
 
-font-family:Georgia,'Times New Roman',serif;
+  background:radial-gradient(circle at center,#fff 0%,#fbf8f4 55%,#f5eee8 100%);
 
-color:#4a4039;
+  font-family:Georgia,serif;
 
-padding:22px;
-
-}
-
-.wrap{width:min(100%,430px);text-align:center}
-
-.hint{
-
-font:11px Arial,sans-serif;
-
-letter-spacing:3px;
-
-text-transform:uppercase;
-
-color:#9b805c;
-
-margin:0 0 22px;
+  color:#51443a;
 
 }
 
-.stage{
+.wrap{
 
-height:330px;
+  width:min(100%,430px);
 
-display:grid;
-
-place-items:center;
-
-perspective:1000px;
+  text-align:center;
 
 }
 
 .envelope{
 
-position:relative;
+  position:relative;
 
-width:min(100%,360px);
+  width:100%;
 
-height:230px;
+  max-width:360px;
 
-cursor:pointer;
+  height:230px;
 
-filter:drop-shadow(0 18px 18px #7d69522a);
+  margin:0 auto;
 
-outline:none;
+  background:#e9d9c8;
+
+  border-radius:5px;
+
+  box-shadow:0 15px 35px rgba(80,55,35,.18);
+
+  cursor:pointer;
+
+  perspective:1000px;
+
+  overflow:hidden;
 
 }
 
-.back{
+.envelope:before{
 
-position:absolute;
+  content:"";
 
-inset:0;
+  position:absolute;
 
-background:#eee4d9;
+  inset:0;
 
-border:1px solid #d6c4ac;
+  background:#dfcbb6;
 
-border-radius:5px;
+  clip-path:polygon(0 0,50% 58%,100% 0);
+
+  transform-origin:top;
+
+  transition:transform 1s ease;
+
+  z-index:5;
+
+}
+
+.envelope:after{
+
+  content:"";
+
+  position:absolute;
+
+  inset:0;
+
+  background:#ead9c7;
+
+  clip-path:polygon(0 100%,50% 48%,100% 100%);
+
+  z-index:3;
+
+}
+
+.envelope.open:before{
+
+  transform:rotateX(180deg);
+
+  z-index:1;
 
 }
 
 .letter{
 
-position:absolute;
+  position:absolute;
 
-left:8%;
+  left:7%;
 
-width:84%;
+  width:86%;
 
-height:190px;
+  height:90%;
 
-bottom:8px;
+  top:5%;
 
-background:#fffdf9;
+  background:#fffdf9;
 
-border:1px solid #e4d5c2;
+  display:flex;
 
-display:flex;
+  flex-direction:column;
 
-flex-direction:column;
+  align-items:center;
 
-justify-content:center;
+  justify-content:center;
 
-align-items:center;
+  z-index:2;
 
-transition:transform 1.15s ease;
+  transition:transform 1s ease;
 
-z-index:2;
-
-padding:15px;
-
-}
-
-.letter small{
-
-font:10px Arial;
-
-letter-spacing:2px;
-
-color:#a88b64;
+  box-shadow:0 2px 8px rgba(0,0,0,.08);
 
 }
 
 .letter strong{
 
-font-size:30px;
+  font-family:'Parisienne',cursive;
 
-font-weight:normal;
+  font-size:43px;
 
-color:#9b7950;
+  font-weight:normal;
 
-margin:10px 0;
-
-}
-
-.letter span{
-
-font:10px Arial;
-
-letter-spacing:2px;
-
-color:#8f8174;
+  color:#9b7651;
 
 }
 
-.flap{
+.letter small{
 
-position:absolute;
+  font-size:12px;
 
-inset:0;
+  letter-spacing:3px;
 
-background:#e6d8c7;
+  margin-top:10px;
 
-clip-path:polygon(0 0,100% 0,50% 58%);
-
-transform-origin:top;
-
-transition:transform .9s ease;
-
-z-index:4;
-
-border-top:1px solid #cbb695;
-
-}
-
-.front{
-
-position:absolute;
-
-inset:0;
-
-background:linear-gradient(145deg,#f8f3ed,#e8d9c8);
-
-clip-path:polygon(0 0,50% 56%,100% 0,100% 100%,0 100%);
-
-z-index:3;
-
-border-radius:4px;
-
-}
-
-.seal{
-
-position:absolute;
-
-z-index:5;
-
-left:50%;
-
-top:55%;
-
-transform:translate(-50%,-50%);
-
-width:48px;
-
-height:48px;
-
-border-radius:50%;
-
-background:#b08b5d;
-
-color:#fff8ed;
-
-display:grid;
-
-place-items:center;
-
-font-size:19px;
-
-box-shadow:0 2px 7px #6e50364a;
-
-transition:opacity .3s;
-
-}
-
-.envelope.open .flap{
-
-transform:rotateX(180deg);
-
-z-index:1;
+  color:#8c725a;
 
 }
 
 .envelope.open .letter{
 
-transform:translateY(-145px);
-
-transition-delay:.45s;
+  transform:translateY(-155px);
 
 }
 
-.envelope.open .front{
+.seal{
 
-z-index:1;
+  position:absolute;
+
+  z-index:6;
+
+  left:50%;
+
+  top:55%;
+
+  transform:translate(-50%,-50%);
+
+  width:48px;
+
+  height:48px;
+
+  border-radius:50%;
+
+  background:#a77d57;
+
+  color:white;
+
+  display:grid;
+
+  place-items:center;
+
+  font-size:17px;
+
+  box-shadow:0 3px 8px rgba(0,0,0,.2);
+
+  transition:opacity .5s ease;
 
 }
 
-.envelope.open .seal{opacity:0}
+.envelope.open .seal{
+
+  opacity:0;
+
+}
+
+.hint{
+
+  margin:18px 0 0;
+
+  font-size:13px;
+
+  color:#8b7764;
+
+  letter-spacing:1px;
+
+}
 
 .card{
 
-opacity:0;
+  display:none;
 
-transform:translateY(18px);
+  opacity:0;
 
-transition:opacity .8s ease,transform .8s ease;
+  margin:28px auto 0;
 
-pointer-events:none;
+  padding:30px 22px;
 
-background:#fffdf9;
+  background:#fffdf9;
 
-border:1px solid #dfceb8;
+  border:1px solid #e5d5c4;
 
-padding:32px 24px 28px;
+  box-shadow:0 12px 35px rgba(80,55,35,.12);
 
-box-shadow:0 15px 40px #79654a18;
-
-position:relative;
+  animation:appear 1s ease forwards;
 
 }
 
 .card.show{
 
-opacity:1;
-
-transform:translateY(0);
-
-pointer-events:auto;
+  display:block;
 
 }
 
-.ornament{
+@keyframes appear{
 
-color:#b18d61;
+  to{opacity:1;transform:translateY(0)}
 
-letter-spacing:5px;
-
-font-size:14px;
-
-}
-
-.eyebrow{
-
-font:10px Arial;
-
-letter-spacing:3px;
-
-color:#9b805c;
-
-margin:17px 0;
+  from{opacity:0;transform:translateY(15px)}
 
 }
 
 .names{
 
-font-size:36px;
+  font-family:'Parisienne',cursive;
 
-font-weight:normal;
+  font-size:52px;
 
-color:#9c7950;
+  font-weight:normal;
 
-margin:8px 0;
+  color:#9b7651;
+
+  margin:0 0 18px;
 
 }
 
 .copy{
 
-font-size:15px;
+  font-size:15px;
 
-line-height:1.7;
+  line-height:1.8;
 
-color:#6d6258;
+  margin:0 auto 24px;
 
-}
-
-.date{
-
-font-size:23px;
-
-color:#9c7950;
-
-margin:22px 0 7px;
+  color:#625448;
 
 }
 
 .details{
 
-font:12px Arial;
+  border-top:1px solid #e5d5c4;
 
-letter-spacing:1.5px;
+  border-bottom:1px solid #e5d5c4;
 
-color:#776b60;
+  padding:18px 0;
 
-line-height:1.9;
+  margin:20px 0;
 
-}
+  line-height:1.9;
 
-.venue{
-
-font-size:19px;
-
-color:#9c7950;
-
-margin:20px 0 5px;
+  color:#625448;
 
 }
 
-.btn{
+.details strong{
 
-display:inline-block;
+  color:#9b7651;
 
-margin-top:22px;
-
-padding:13px 20px;
-
-background:#a8875e;
-
-color:white;
-
-text-decoration:none;
-
-font:11px Arial;
-
-letter-spacing:1.5px;
-
-text-transform:uppercase;
-
-border-radius:2px;
+  letter-spacing:1px;
 
 }
 
-.footer{
+.map-link{
 
-font-size:13px;
+  display:inline-block;
 
-color:#8b7b6c;
+  margin-top:8px;
 
-margin-top:19px;
+  color:#9b7651;
 
-line-height:1.6;
+  text-decoration:underline;
+
+  font-size:14px;
 
 }
 
-.note{
+.confirm{
 
-font:11px Arial;
+  font-size:14px;
 
-color:#9b8c7d;
+  line-height:1.7;
 
-margin-top:18px;
+  margin:20px 0 14px;
+
+}
+
+.closing{
+
+  font-size:14px;
+
+  color:#8c725a;
+
+  margin-top:20px;
+
+}
+
+@media(max-width:380px){
+
+  .names{font-size:46px}
+
+  .letter strong{font-size:37px}
+
+  .card{padding:25px 16px}
 
 }
 
@@ -412,143 +362,99 @@ margin-top:18px;
 
 <body>
 
-<main class="wrap">
+<div class="wrap">
 
-<p class="hint">Një ftesë nga zemra</p>
+  <div class="envelope" id="envelope" onclick="openInvitation()">
 
-<div class="stage">
+    <div class="letter">
 
-<div class="envelope" id="env"
+      <strong>Rinor & Floresa</strong>
 
-role="button" tabindex="0"
+      <small>31 KORRIK 2027</small>
 
-aria-label="Hap zarfin">
+    </div>
 
-<div class="back"></div>
+    <div class="seal">R ♡ F</div>
 
-<div class="letter">
+  </div>
 
-<small>ME DASHURI</small>
+  <p class="hint" id="hint">Klikoni mbi zarf për ta hapur ftesën</p>
 
-<strong>Rinor & Floresa</strong>
+  <div class="card" id="card">
 
-<span>31 KORRIK 2027</span>
+    <h1 class="names">Rinor & Floresa</h1>
+
+    <p class="copy">
+
+      Me shumë dashuri, ju ftojmë të ndani me ne
+
+      gëzimin e fillimit të një kapitulli të ri në jetën tonë.
+
+    </p>
+
+    <div class="details">
+
+      <div><strong>31 Korrik 2027</strong></div>
+
+      <div>ORA 19:00</div>
+
+      <div><strong>Restaurant 3 Yjet</strong></div>
+
+      <div>Ferizaj</div>
+
+      <a class="map-link"
+
+         href="https://www.google.com/maps/search/?api=1&query=Restaurant%203%20Yjet%2C%20Ferizaj%2C%20Kosovo"
+
+         target="_blank">
+
+        Shikoni lokacionin
+
+      </a>
+
+    </div>
+
+    <p class="confirm">
+
+      Ju lutemi, konfirmoni pjesëmarrjen tuaj!
+
+    </p>
+
+    <p class="closing">
+
+      Me respekt,<br>
+
+      Familja Derguti
+
+    </p>
+
+  </div>
 
 </div>
-
-<div class="flap"></div>
-
-<div class="front"></div>
-
-<div class="seal">R&nbsp;♡&nbsp;F</div>
-
-</div>
-
-</div>
-
-<p class="note" id="note">
-
-Preke zarfin për ta hapur ftesën
-
-</p>
-
-<section class="card" id="card">
-
-<div class="ornament">✦ ❀ ✦</div>
-
-<p class="eyebrow">JU FTOJMË ME DASHURI</p>
-
-<h1 class="names">Rinor & Floresa</h1>
-
-<p class="copy">
-
-Ju ftojmë të bashkoheni me ne në ceremoninë tonë të dasmës,
-
-për të ndarë lumturinë tonë në këtë ditë të veçantë.
-
-</p>
-
-<div class="date">31 Korrik 2027</div>
-
-<div class="details">
-
-E SHTUNË · ORA 19:00
-
-</div>
-
-<div class="venue">Restaurant 3 Yjet</div>
-
-<div class="details">Ferizaj</div>
-
-<a class="btn"
-
-href="https://www.google.com/maps/search/?api=1&query=Restaurant%203%20Yjet%2C%20Ferizaj%2C%20Kosovo"
-
-target="_blank"
-
-rel="noopener">
-
-Hap lokacionin në hartë
-
-</a>
-
-<p class="footer">
-
-Me respekt,<br>
-
-<strong>Familja Derguti</strong>
-
-</p>
-
-<p class="note">
-
-Ju lutemi, konfirmoni pjesëmarrjen tuaj!
-
-</p>
-
-<div class="ornament">✦</div>
-
-</section>
-
-</main>
 
 <script>
 
-const env = document.getElementById('env');
+function openInvitation(){
 
-const card = document.getElementById('card');
+  const envelope=document.getElementById('envelope');
 
-const note = document.getElementById('note');
+  const card=document.getElementById('card');
 
-function openInvite(){
+  const hint=document.getElementById('hint');
 
-if(env.classList.contains('open')) return;
+  if(envelope.classList.contains('open')) return;
 
-env.classList.add('open');
+  envelope.classList.add('open');
 
-note.textContent='Me shumë dashuri ju presim';
+  hint.style.display='none';
 
-setTimeout(()=>{
+  setTimeout(function(){
 
-card.classList.add('show');
+    card.classList.add('show');
 
-},850);
-
-}
-
-env.addEventListener('click',openInvite);
-
-env.addEventListener('keydown',e=>{
-
-if(e.key==='Enter'||e.key===' '){
-
-e.preventDefault();
-
-openInvite();
+  },850);
 
 }
-
-});
 
 </script>
 
